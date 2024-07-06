@@ -248,7 +248,7 @@ getConfig().then(config => {
         let latestSummaryText = ''; // 用於存儲最新的摘要文本
         let latestHighlightText = ''; // 用於存儲最新的重點文本
 
-const backendUrl = 'https://nl-9.onrender.com'; // 替換為你的 Render 域名
+const baseURL = 'https://nl-9.onrender.com'; // 更改此行
         
         window.onload = () => {
             const area = document.querySelector('#area');
@@ -386,7 +386,7 @@ uploadDocBtn.addEventListener('click', () => {
                     const formData = new FormData();
                     formData.append('file', file);
 
-                    const response = await fetch('https://nl-9.onrender.com/upload-doc', {
+                    const response = await fetch('${baseURL}/upload-doc', {
                         method: 'POST',
                         body: formData
                     });
@@ -502,7 +502,7 @@ uploadDocBtn.addEventListener('click', () => {
                 const formData = new FormData();
                 formData.append('file', file);
 
-                const response = await fetch('https://nl-9.onrender.com/upload-audio', {
+                const response = await fetch('${baseURL}/upload-audio', {
                     method: 'POST',
                     body: formData
                 });
@@ -554,7 +554,7 @@ modifyBtn.addEventListener('click', async () => {
         }
 
         try {
-            const response = await fetch('https://nl-9.onrender.com/polish-text', {
+            const response = await fetch('${baseURL}/polish-text', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -612,7 +612,7 @@ addSummary.addEventListener('click', async () => {
         }
 
         try {
-            const response = await fetch('https://nl-9.onrender.com/summarize-text', {
+            const response = await fetch('${baseURL}/summarize-text', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -670,7 +670,7 @@ addHighlight.addEventListener('click', async () => {
         }
 
         try {
-            const response = await fetch('https://nl-9.onrender.com/highlight-text', {
+            const response = await fetch('${baseURL}/highlight-text', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
