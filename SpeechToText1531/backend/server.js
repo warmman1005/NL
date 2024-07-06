@@ -13,6 +13,7 @@ import { apiKeyGoogle, openAIKey } from './config.js'; // 確保這行正確引�
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from 'path';
+import dotenv from 'dotenv';
 
 
 const app = express();
@@ -299,6 +300,7 @@ app.post('/highlight-text', async (req, res) => {
 
 app.post('/polish-text', async (req, res) => {
     const { text, language } = req.body;
+    const apiKey = process.env.OPENAI_KEY;
     
     let systemMessage;
     switch (language) {
