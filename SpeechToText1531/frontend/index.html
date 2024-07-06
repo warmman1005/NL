@@ -247,7 +247,9 @@ getConfig().then(config => {
         let latestModifiedText = ''; // 用於存儲最新的修飾文本
         let latestSummaryText = ''; // 用於存儲最新的摘要文本
         let latestHighlightText = ''; // 用於存儲最新的重點文本
-    
+
+const backendUrl = 'https://nl-9.onrender.com'; // 替換為你的 Render 域名
+        
         window.onload = () => {
             const area = document.querySelector('#area');
             const startBtn = document.querySelector('#startBtn');
