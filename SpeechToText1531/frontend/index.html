@@ -489,6 +489,16 @@ uploadDocBtn.addEventListener('click', () => {
         const data = await response.json();
         return data;
     }
+
+async function summarizeText(text, language) {
+    const response = await fetch(`${baseURL}/summarize-text`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: text, language: language })
+    });
+    const data = await response.json();
+    return data;
+}
         
        
 
