@@ -14,9 +14,14 @@ import { apiKeyGoogle, openAIKey } from './config.js'; // 確保這行正確引�
 const app = express();
 const PORT = 3000;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(bodyParser.json({ limit: '1000mb' }));
 app.use(bodyParser.urlencoded({ limit: '1000mb', extended: true }));
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // 確保這行在所有其他路由之前
 app.get('/config', (req, res) => {
