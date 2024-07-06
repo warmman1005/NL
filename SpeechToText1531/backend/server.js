@@ -82,7 +82,7 @@ async function transcribeAudio(filePath) {
     const response = await fetch('https://api.openai.com/v1/audio/transcriptions', {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${process.env.OPENAI_KEY; }`
+            'Authorization': `Bearer ${process.env.OPENAI_KEY}`
         },
         body: formData
     });
@@ -212,7 +212,7 @@ app.post('/summarize-text', async (req, res) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_KEY; }`
+                'Authorization': `Bearer ${process.env.OPENAI_KEY}`
             },
             body: JSON.stringify({
                 model: 'gpt-4-turbo',
@@ -275,7 +275,7 @@ app.post('/highlight-text', async (req, res) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_KEY; }`
+                'Authorization': `Bearer ${process.env.OPENAI_KEY}`
             },
             body: JSON.stringify({
                 model: 'gpt-4-turbo',
@@ -339,7 +339,7 @@ app.post('/polish-text', async (req, res) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_KEY;}`
+                'Authorization': `Bearer ${process.env.OPENAI_KEY}`
             },
             body: JSON.stringify({
                 model: 'gpt-4-turbo',
