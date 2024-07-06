@@ -28,10 +28,10 @@ const corsOptions = {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: '1000mb' }));
 app.use(bodyParser.urlencoded({ limit: '1000mb', extended: true }));
-app.use(cors());
-app.use(bodyParser.json());
+
 
 app.use(express.static(path.join(__dirname, '../frontend')));
 
