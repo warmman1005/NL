@@ -222,20 +222,7 @@
     </div>
 
     <script>
-       async function getConfig() {
-    const response = await fetch('/config');
-    const config = await response.json();
-    return config;
-}
-
-let apiKeyGoogle, openAIKey;
-        
-getConfig().then(config => {
-    apiKeyGoogle = config.apiKeyGoogle;
-    openAIKey = config.openAIKey;
-    console.log('Google API Key:', apiKeyGoogle);
-    console.log('OpenAI Key:', openAIKey);
-});
+       
 
 
 // 確保 apiKeyGoogle 在使用前已經正確賦值
@@ -252,6 +239,32 @@ getConfig().then(config => {
 
 const baseURL = 'https://nl-9.onrender.com'; // 更改此行
 
+
+        async function getConfig() {
+    const response = await fetch('${baseURL}/config');
+    const config = await response.json();
+    return config;
+}
+
+let apiKeyGoogle, openAIKey;
+        
+getConfig().then(config => {
+    apiKeyGoogle = config.apiKeyGoogle;
+    openAIKey = config.openAIKey;
+    console.log('Google API Key:', apiKeyGoogle);
+    console.log('OpenAI Key:', openAIKey);
+});
+
+async function polishText(text, language) {
+    const response = await fetch(`${baseURL}/polish-text`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: text, language: language })
+    });
+    const data = await response.json();
+    return data;
+}
+        
         async function summarizeText(text, language) {
     const response = await fetch(`${baseURL}/summarize-text`, {
         method: 'POST',
