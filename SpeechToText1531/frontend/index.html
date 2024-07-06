@@ -223,13 +223,12 @@
 
     <script>
        async function getConfig() {
-    const response = await fetch(`${baseURL}/config`);
+    const response = await fetch('/config');
     const config = await response.json();
     return config;
 }
 
-let apiKeyGoogle;
-let openAIKey;
+let apiKeyGoogle, openAIKey;
         
 getConfig().then(config => {
     apiKeyGoogle = config.apiKeyGoogle;
@@ -237,7 +236,6 @@ getConfig().then(config => {
     console.log('Google API Key:', apiKeyGoogle);
     console.log('OpenAI Key:', openAIKey);
 });
-
 
 
 // 確保 apiKeyGoogle 在使用前已經正確賦值
