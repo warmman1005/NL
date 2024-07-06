@@ -222,17 +222,18 @@
     </div>
 
     <script>
-        async function getConfig() {
-    const response = await fetch('https://nl-9.onrender.com/config');
+       async function getConfig() {
+    const response = await fetch('/config');
     const config = await response.json();
     return config.apiKeyGoogle;
 }
 
 let apiKeyGoogle;
-getConfig().then(apiKey => {
-    apiKeyGoogle = apiKey;
+getConfig().then(config => {
+    apiKeyGoogle = config;
     console.log('Google API Key:', apiKeyGoogle);
 });
+
 
 
 // 確保 apiKeyGoogle 在使用前已經正確賦值
