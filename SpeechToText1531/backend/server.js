@@ -10,6 +10,8 @@ import ffmpegStatic from 'ffmpeg-static';
 import fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
 import { apiKeyGoogle, openAIKey } from './config.js'; // 確保這行正確引用 config.js
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const app = express();
 const PORT = 3000;
