@@ -24,6 +24,7 @@ const __dirname = path.dirname(__filename);
 app.use(bodyParser.json({ limit: '1000mb' }));
 app.use(bodyParser.urlencoded({ limit: '1000mb', extended: true }));
 app.use(cors());
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '../frontend')));
 
@@ -31,6 +32,9 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.get('/config', (req, res) => {
     res.json({ apiKeyGoogle: process.env.API_KEY_GOOGLE });
 });
+
+console.log('Google API Key:', apiKeyGoogle);
+console.log('OpenAI Key:', openAIKey);
 
 
 app.get('/', (req, res) => {
