@@ -386,7 +386,7 @@ uploadDocBtn.addEventListener('click', () => {
                     const formData = new FormData();
                     formData.append('file', file);
 
-                    const response = await fetch('http://localhost:3000/upload-doc', {
+                    const response = await fetch('https://nl-9.onrender.com/upload-doc', {
                         method: 'POST',
                         body: formData
                     });
@@ -479,7 +479,7 @@ uploadDocBtn.addEventListener('click', () => {
 
             async function polishText(text, language) {
             // 假设你的后端运行在本地机器的3000端口
-            const baseURL = 'http://localhost:3000';
+            const baseURL = 'https://nl-9.onrender.com';
             const response = await fetch(`${baseURL}/polish-text`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -502,7 +502,7 @@ uploadDocBtn.addEventListener('click', () => {
                 const formData = new FormData();
                 formData.append('file', file);
 
-                const response = await fetch('http://localhost:3000/upload-audio', {
+                const response = await fetch('https://nl-9.onrender.com/upload-audio', {
                     method: 'POST',
                     body: formData
                 });
@@ -554,7 +554,7 @@ modifyBtn.addEventListener('click', async () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/polish-text', {
+            const response = await fetch('https://nl-9.onrender.com/polish-text', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -612,7 +612,7 @@ addSummary.addEventListener('click', async () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/summarize-text', {
+            const response = await fetch('https://nl-9.onrender.com/summarize-text', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -670,7 +670,7 @@ addHighlight.addEventListener('click', async () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/highlight-text', {
+            const response = await fetch('https://nl-9.onrender.com/highlight-text', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
