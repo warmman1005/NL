@@ -30,11 +30,9 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 
 // 確保這行在所有其他路由之前
 app.get('/config', (req, res) => {
-    res.json({
-        apiKeyGoogle: process.env.API_KEY_GOOGLE,
-        openAIKey: process.env.OPENAI_KEY
-    });
+    res.json({ apiKeyGoogle: process.env.API_KEY_GOOGLE, openAIKey: process.env.OPENAI_KEY });
 });
+
 
 
 console.log('Google API Key:', apiKeyGoogle);
