@@ -232,7 +232,7 @@ let apiKeyGoogle;
 let openAIKey;
         
 getConfig().then(config => {
-    piKeyGoogle = config.apiKeyGoogle;
+    apiKeyGoogle = config.apiKeyGoogle;
     openAIKey = config.openAIKey;
     console.log('Google API Key:', apiKeyGoogle);
     console.log('OpenAI Key:', openAIKey);
