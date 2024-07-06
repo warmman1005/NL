@@ -168,7 +168,8 @@ app.post('/upload-doc', upload.single('file'), async (req, res) => {
 
 app.post('/summarize-text', async (req, res) => {
     const { text, language } = req.body;
-
+    const openAIKey = process.env.OPENAI_KEY;
+    
     let systemMessage;
     switch (language) {
         case 'en':
