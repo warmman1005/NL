@@ -19,6 +19,12 @@ dotenv.config();
 const app = express();
 const PORT = 3000;
 
+const corsOptions = {
+  origin: '*', // 根據需要設置允許的域名
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
