@@ -481,15 +481,14 @@ uploadDocBtn.addEventListener('click', () => {
 
             async function polishText(text, language) {
             // 假设你的后端运行在本地机器的3000端口
-            const baseURL = 'https://nl-9.onrender.com';
-            const response = await fetch(`${baseURL}/polish-text`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ text: text, language: language })
-            });
-            const data = await response.json();
-            return data;
-        }   
+             const response = await fetch(`${baseURL}/polish-text`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: text, language: language })
+        });
+        const data = await response.json();
+        return data;
+    }
         
        
 
