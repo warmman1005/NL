@@ -98,7 +98,8 @@ async function transcribeAudio(filePath) {
 app.post('/upload-audio', upload.single('file'), async (req, res) => {
     try {
         const uploadDir = './uploads';
-
+        const openAIKey = process.env.OPENAI_KEY;
+        
         if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir, { recursive: true });
         }
@@ -148,7 +149,8 @@ app.post('/upload-audio', upload.single('file'), async (req, res) => {
 app.post('/upload-doc', upload.single('file'), async (req, res) => {
     try {
         const file = req.file;
-
+        const openAIKey = process.env.OPENAI_KEY;
+        
         if (!file) {
             return res.status(400).json({ error: 'No file uploaded' });
         }
@@ -172,7 +174,8 @@ app.post('/upload-doc', upload.single('file'), async (req, res) => {
 
 app.post('/summarize-text', async (req, res) => {
     const { text, language } = req.body;
-
+    const openAIKey = process.env.OPENAI_KEY;
+    
     let systemMessage;
     switch (language) {
         case 'en':
@@ -235,7 +238,7 @@ app.post('/summarize-text', async (req, res) => {
 
 app.post('/highlight-text', async (req, res) => {
     const { text, language } = req.body;
-
+    const openAIKey = process.env.OPENAI_KEY;
     let systemMessage;
     switch (language) {
         case 'en':
@@ -298,7 +301,8 @@ app.post('/highlight-text', async (req, res) => {
 
 app.post('/polish-text', async (req, res) => {
     const { text, language } = req.body;
-
+    const openAIKey = process.env.OPENAI_KEY;
+    
     let systemMessage;
     switch (language) {
         case 'en':
