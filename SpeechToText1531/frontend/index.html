@@ -225,12 +225,15 @@
        async function getConfig() {
     const response = await fetch('/config');
     const config = await response.json();
-    return config.apiKeyGoogle;
+    return config;
 }
 
 let apiKeyGoogle;
+let openAIKey;
+        
 getConfig().then(config => {
-    apiKeyGoogle = config;
+    piKeyGoogle = config.apiKeyGoogle;
+    openAIKey = config.openAIKey;
     console.log('Google API Key:', apiKeyGoogle);
     console.log('OpenAI Key:', openAIKey);
 });
