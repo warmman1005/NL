@@ -301,7 +301,6 @@ app.post('/highlight-text', async (req, res) => {
 
 app.post('/polish-text', async (req, res) => {
     const { text, language } = req.body;
-    const openAIKey = process.env.OPENAI_KEY;
     
     let systemMessage;
     switch (language) {
