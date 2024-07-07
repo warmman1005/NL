@@ -241,7 +241,7 @@ const baseURL = 'https://nl-9.onrender.com'; // 更改此行
 
 
         async function getConfig() {
-    const response = await fetch('${baseURL}/config');
+    const response = await fetch(`${baseURL}/config`);
     const config = await response.json();
     return config;
 }
