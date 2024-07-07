@@ -588,7 +588,7 @@ modifyBtn.addEventListener('click', async () => {
         }
 
         try {
-            const response = await fetch('${baseURL}/polish-text', {
+            const response = await fetch(`${baseURL}/polish-text`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -646,7 +646,7 @@ addSummary.addEventListener('click', async () => {
         }
 
         try {
-            const response = await fetch('${baseURL}/summarize-text', {
+            const response = await fetch(`${baseURL}/summarize-text`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -704,7 +704,7 @@ addHighlight.addEventListener('click', async () => {
         }
 
         try {
-            const response = await fetch('${baseURL}/highlight-text', {
+            const response = await fetch(ˋ${baseURL}/highlight-textˋ, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
