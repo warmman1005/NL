@@ -275,9 +275,31 @@ async function polishText(text, language) {
     return data;
 }
 
+    async function uploadDocument(file) {
+    const formData = new FormData();
+    formData.append('file', file);
 
+    const response = await fetch(`${baseURL}/upload-doc`, {
+        method: 'POST',
+        body: formData
+    });
 
+    const data = await response.json();
+    return data;
+}
 
+    async function uploadAudio(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await fetch(`${baseURL}/upload-audio`, {
+        method: 'POST',
+        body: formData
+    });
+
+    const data = await response.json();
+    return data;
+}
         
         
         window.onload = () => {
@@ -416,7 +438,7 @@ uploadDocBtn.addEventListener('click', () => {
                     const formData = new FormData();
                     formData.append('file', file);
 
-                    const response = await fetch('${baseURL}/upload-doc', {
+                    const response = await fetch(`${baseURL}/upload-doc`, {
                         method: 'POST',
                         body: formData
                     });
@@ -541,7 +563,7 @@ async function summarizeText(text, language) {
                 const formData = new FormData();
                 formData.append('file', file);
 
-                const response = await fetch('${baseURL}/upload-audio', {
+                const response = await fetch(`${baseURL}/upload-audio`, {
                     method: 'POST',
                     body: formData
                 });
