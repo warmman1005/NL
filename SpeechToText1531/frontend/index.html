@@ -241,7 +241,7 @@ const baseURL = 'https://nl-9.onrender.com'; // 更改此行
 
 
         async function getConfig() {
-    const response = await fetch('${baseURL}/config');
+    const response = await fetch(`${baseURL}/config`);
     const config = await response.json();
     return config;
 }
@@ -256,7 +256,7 @@ getConfig().then(config => {
 });
 
 async function polishText(text, language) {
-    const response = await fetch('${baseURL}/polish-text', {
+    const response = await fetch(`${baseURL}/polish-text`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: text, language: language })
