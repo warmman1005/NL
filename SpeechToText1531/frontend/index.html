@@ -147,7 +147,7 @@
             margin-bottom: 20px;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    
 </head>
 <body>
     <div>
@@ -226,7 +226,7 @@
     </div>
 
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script>
        
 
@@ -811,11 +811,8 @@ addHighlight.addEventListener('click', async () => {
         putOnlyUsedFonts: true
     });
 
-    doc.setFont('Helvetica', 'normal');
+    doc.setFont('helvetica', 'normal');
     doc.setFontSize(12);
-    doc.addFileToVFS('GenShinGothic-Normal.ttf', 'path/to/GenShinGothic-Normal.ttf');
-    doc.addFont('GenShinGothic-Normal.ttf', 'GenShinGothic', 'normal');
-    doc.setFont('GenShinGothic'); // 设置字体
 
     const lines = doc.splitTextToSize(content, 500);
     doc.text(40, 60, lines);
