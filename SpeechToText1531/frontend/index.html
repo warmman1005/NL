@@ -812,9 +812,11 @@ addHighlight.addEventListener('click', async () => {
                 putOnlyUsedFonts: true
                
             });
-            doc.addFont('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.60/fonts/NotoSansCJKsc-Regular.ttf', 'NotoSansCJKsc-Regular', 'normal');
-            doc.setFont('NotoSerifCJKsc-Regular', 'normal');
-            doc.setFontSize(12);
+            const fontUrl = 'https://cdn.jsdelivr.net/npm/@chinese-fonts/noto-sans-sc@0.0.5/fonts/NotoSansSC-Regular.ttf';
+            const font = await fetch(fontUrl).then(res => res.arrayBuffer());
+            doc.addFileToVFS('NotoSansSC-Regular.ttf', font);
+            doc.addFont('NotoSansSC-Regular.ttf', 'NotoSansSC', 'normal');
+            doc.setFont('NotoSansSC');
             
             const lines = doc.splitTextToSize(content, 500);
             doc.text(40, 60, lines);
