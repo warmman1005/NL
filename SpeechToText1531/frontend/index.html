@@ -808,10 +808,11 @@ addHighlight.addEventListener('click', async () => {
                 orientation: 'portrait',
                 unit: 'pt',
                 format: 'a4',
+                putOnlyUsedFonts: true
                
             });
         
-            doc.setFont('pingfang', 'normal');
+            doc.setFont('Times-Roman');
             doc.setFontSize(12);
             
             const lines = doc.splitTextToSize(content, 500);
