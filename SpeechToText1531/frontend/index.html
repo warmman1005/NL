@@ -227,20 +227,14 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.plugin.standard_fonts_metrics.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.plugin.split_text_to_size.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.plugin.from_html.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.4.0/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.4.0/dist/jspdf.plugin.standard_fonts_metrics.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.4.0/dist/jspdf.plugin.split_text_to_size.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.4.0/dist/jspdf.plugin.from_html.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/lang/zh-HK.js"></script>
 
+
     <script>
-       
-
-
-// 確保 apiKeyGoogle 在使用前已經正確賦值
-
-
-
     
         let initialOriginalTexts = []; // 用於存儲初始的原文
         let currentOriginalTexts = []; // 用於存儲每次翻譯前的當前原文
@@ -799,31 +793,32 @@ addHighlight.addEventListener('click', async () => {
             });
 
             downloadPdfBtn.addEventListener('click', () => {
-    const content = `
-        錄音內容: ${area.value}
-    
-        修飾: ${modifiedText.value}
-    
-        摘要: ${summaryText.value}
-    
-        重點: ${highlightText.value}
-    `;
+            const content = `
+                錄音內容: ${area.value}
+                
+                修飾: ${modifiedText.value}
+                
+                摘要: ${summaryText.value}
+                
+                重點: ${highlightText.value}
+            `;
+        
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                orientation: 'portrait',
+                unit: 'pt',
+                format: 'a4',
+               
+            });
+        
+            doc.setFont('pingfang', 'normal');
+            doc.setFontSize(12);
+            
+            const lines = doc.splitTextToSize(content, 500);
+            doc.text(40, 60, lines);
+            doc.save('document.pdf');
+        });
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({
-        orientation: 'portrait',
-        unit: 'pt',
-        format: 'a4',
-        putOnlyUsedFonts: true
-    });
-
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(12);
-
-    const lines = doc.splitTextToSize(content, 500);
-    doc.text(40, 60, lines);
-    doc.save('document.pdf');
-});
 
 
 
