@@ -796,11 +796,11 @@ addHighlight.addEventListener('click', async () => {
             downloadPdfBtn.addEventListener('click', () => {
             const content = `
                 錄音內容: ${area.value}
-                
+        
                 修飾: ${modifiedText.value}
-                
+        
                 摘要: ${summaryText.value}
-                
+        
                 重點: ${highlightText.value}
             `;
         
@@ -810,14 +810,13 @@ addHighlight.addEventListener('click', async () => {
                 unit: 'pt',
                 format: 'a4',
                 putOnlyUsedFonts: true
-               
             });
-            const fontUrl = 'https://cdn.jsdelivr.net/npm/@chinese-fonts/noto-sans-sc@0.0.5/fonts/NotoSansSC-Regular.ttf';
-            const font = await fetch(fontUrl).then(res => res.arrayBuffer());
-            doc.addFileToVFS('NotoSansSC-Regular.ttf', font);
-            doc.addFont('NotoSansSC-Regular.ttf', 'NotoSansSC', 'normal');
-            doc.setFont('NotoSansSC');
-            
+        
+            // 設定字體
+            doc.addFont('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.60/fonts/NotoSansCJKsc-Regular.ttf', 'NotoSansCJKsc-Regular', 'normal');
+            doc.setFont('NotoSansCJKsc-Regular', 'normal');
+            doc.setFontSize(12);
+        
             const lines = doc.splitTextToSize(content, 500);
             doc.text(40, 60, lines);
             doc.save('document.pdf');
