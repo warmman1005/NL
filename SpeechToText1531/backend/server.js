@@ -40,8 +40,7 @@ app.get('/config', (req, res) => {
     res.json({ apiKeyGoogle: process.env.API_KEY_GOOGLE, openAIKey: process.env.OPENAI_KEY });
 });
 
-console.log('Google API Key:', process.env.API_KEY_GOOGLE);
-console.log('OpenAI Key:', process.env.OPENAI_KEY);
+
 
 app.get('/', (req, res) => {
     res.send('語音轉文字後端服務運行中');
