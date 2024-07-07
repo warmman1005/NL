@@ -709,7 +709,7 @@ addHighlight.addEventListener('click', async () => {
         }
 
         try {
-            const response = await fetch(ˋ${baseURL}/highlight-textˋ, {
+            const response = await fetch(`${baseURL}/highlight-text`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
