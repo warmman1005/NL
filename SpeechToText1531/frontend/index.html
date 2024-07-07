@@ -224,6 +224,8 @@
         </div>
     </div>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script>
        
 
@@ -768,6 +770,8 @@ addHighlight.addEventListener('click', async () => {
     
             downloadBtn.addEventListener('click', () => {
                 const content = `
+                    錄音內容: ${area.value}
+               
                     修飾: ${modifiedText.value}
     
                     摘要: ${summaryText.value}
@@ -786,6 +790,24 @@ addHighlight.addEventListener('click', async () => {
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
             });
+
+            document.getElementById('downloadPdfBtn').addEventListener('click', () => {
+            const content = `
+                錄音內容: ${area.value}
+        
+                修飾: ${modifiedText.value}
+        
+                摘要: ${summaryText.value}
+        
+                重點: ${highlightText.value}
+            `;
+        
+            const doc = new jsPDF();
+            doc.text(content, 10, 10);
+            doc.save('document.pdf');
+        });
+
+            
     
             translateBtn.addEventListener('click', async () => {
 
