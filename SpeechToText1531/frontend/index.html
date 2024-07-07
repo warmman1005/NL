@@ -793,31 +793,35 @@ addHighlight.addEventListener('click', async () => {
             });
 
             downloadPdfBtn.addEventListener('click', () => {
-            const content = `
-                錄音內容: ${area.value}
-        
-                修飾: ${modifiedText.value}
-        
-                摘要: ${summaryText.value}
-        
-                重點: ${highlightText.value}
-            `;
-        
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF({
-                orientation: 'portrait',
-                unit: 'pt',
-                format: 'a4',
-                putOnlyUsedFonts: true
-            });
-        
-            doc.setFont('helvetica', 'normal');
-            doc.setFontSize(12);
-            
-            const lines = doc.splitTextToSize(content, 500);
-            doc.text(40, 60, lines);
-            doc.save('document.pdf');
-        });
+    const content = `
+        錄音內容: ${area.value}
+    
+        修飾: ${modifiedText.value}
+    
+        摘要: ${summaryText.value}
+    
+        重點: ${highlightText.value}
+    `;
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'pt',
+        format: 'a4',
+        putOnlyUsedFonts: true
+    });
+
+    doc.setFont('Helvetica', 'normal');
+    doc.setFontSize(12);
+    doc.addFileToVFS('GenShinGothic-Normal.ttf', 'path/to/GenShinGothic-Normal.ttf');
+    doc.addFont('GenShinGothic-Normal.ttf', 'GenShinGothic', 'normal');
+    doc.setFont('GenShinGothic'); // 设置字体
+
+    const lines = doc.splitTextToSize(content, 500);
+    doc.text(40, 60, lines);
+    doc.save('document.pdf');
+});
+
 
 
 
