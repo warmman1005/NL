@@ -805,7 +805,9 @@ addHighlight.addEventListener('click', async () => {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
         
-            doc.text(content, 10, 10);
+            doc.setFontSize(12);
+            const lines = doc.splitTextToSize(content, 180);
+            doc.text(lines, 10, 10);
             doc.save('document.pdf');
         });
 
