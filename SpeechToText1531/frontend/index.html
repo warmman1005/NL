@@ -803,13 +803,21 @@ addHighlight.addEventListener('click', async () => {
             `;
         
             const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+            const doc = new jsPDF({
+                orientation: 'portrait',
+                unit: 'pt',
+                format: 'a4',
+                putOnlyUsedFonts: true
+            });
         
+            doc.setFont('helvetica', 'normal');
             doc.setFontSize(12);
-            const lines = doc.splitTextToSize(content, 180);
-            doc.text(lines, 10, 10);
+            
+            const lines = doc.splitTextToSize(content, 500);
+            doc.text(40, 60, lines);
             doc.save('document.pdf');
         });
+
 
 
             
