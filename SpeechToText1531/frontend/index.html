@@ -407,7 +407,8 @@ async function polishText(text, language) {
                 recognition.start(); // 确保在没有按下停止按钮之前不会中断录音
             }
         };
-
+        
+        area.value = ''; // 在開始錄音時清空文本框内容
         recognition.start();
         isRecording = true;
         startTimer();
