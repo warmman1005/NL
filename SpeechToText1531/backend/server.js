@@ -319,7 +319,7 @@ app.post('/polish-text', async (req, res) => {
             systemMessage = 'Bạn là trợ lý giúp chỉnh sửa văn bản.';
             break;
         default:
-            systemMessage = '你是一個幫助修飾文本的助手，請確保輸出為繁體中文。';
+            systemMessage = '你是一個幫助修飾文本的助手，請確保輸出為繁體中文，絕對不准出現簡體字。';
     }
 
     const userMessage = language === 'en'
