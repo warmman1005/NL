@@ -330,7 +330,7 @@ app.post('/polish-text', async (req, res) => {
         ? `Silakan perhalus konten berikut:\n\n${text}`
         : language === 'vi'
         ? `Vui lòng chỉnh sửa nội dung sau:\n\n${text}`
-        : `請修飾以下內容:並且跟原意思相近，並確保輸出為繁體中文\n\n${text}`;
+        : `請修飾以下內容:並且跟原意思相近，並確保輸出為繁體中文，絕對不准出現簡體字\n\n${text}`;
 
     try {
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
