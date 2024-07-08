@@ -418,6 +418,7 @@ async function polishText(text, language) {
         };
         
         area.value = ''; // 在開始錄音時清空文本框内容
+        modifiedText.value='';
         recognition.start();
         isRecording = true;
         startTimer();
@@ -804,7 +805,6 @@ addHighlight.addEventListener('click', async () => {
                 重點: ${highlightText.value}
             `;
         
-            const { jsPDF } = window.jspdf;
             const doc = new jsPDF({
                 orientation: 'portrait',
                 unit: 'pt',
@@ -812,16 +812,14 @@ addHighlight.addEventListener('click', async () => {
                 putOnlyUsedFonts: true
             });
         
-            // 設定字體
-            doc.addFont('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.60/fonts/NotoSansCJKsc-Regular.ttf', 'NotoSansCJKsc-Regular', 'normal');
-            doc.setFont('NotoSansCJKsc-Regular', 'normal');
+            doc.setFont('NotoSansTC-Regular', 'normal');
             doc.setFontSize(12);
-        
+            
             const lines = doc.splitTextToSize(content, 500);
             doc.text(40, 60, lines);
             doc.save('document.pdf');
         });
-
+    }
 
 
 
