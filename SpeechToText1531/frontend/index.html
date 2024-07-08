@@ -163,6 +163,7 @@
         <div id="timer">00:00</div>
         <button id="stopBtn">停止錄音</button>
         <button id="uploadBtn">上傳音檔</button>
+        
         <input type="file" id="docInput" accept=".docx,.txt" style="display: none;">
 
         選擇呈現語言： 
@@ -329,7 +330,7 @@ async function polishText(text, language) {
             const timer = document.querySelector('#timer');
             const progressBar = document.getElementById('progressBar');
             const fileDocInput = document.querySelector('#fileDocInput'); // 新增文件输入框
-            const uploadDocBtn = document.querySelector('#uploadDocBtn');
+           
             const docInput = document.querySelector('#docInput');   
             const downloadPdfBtn = document.querySelector('#downloadPdfBtn');
 
@@ -431,44 +432,6 @@ async function polishText(text, language) {
     }
 }
 
-uploadDocBtn.addEventListener('click', () => {
-        fileDocInput.click();
-    });
-
-
-
-    if (uploadDocBtn && docInput) {
-        uploadDocBtn.addEventListener('click', () => {
-            docInput.click();
-        });
-
-        docInput.addEventListener('change', async (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                try {
-                    const formData = new FormData();
-                    formData.append('file', file);
-
-                    const response = await fetch(`${baseURL}/upload-doc`, {
-                        method: 'POST',
-                        body: formData
-                    });
-
-                    const data = await response.json();
-                    if (response.ok) {
-                        area.value = data.text;
-                        console.log('Document upload and processing successful:', data.text);
-                    } else {
-                        console.error('Document processing failed:', data);
-                        alert('文檔處理失敗: ' + data.error.message);
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('處理過程中出現錯誤');
-                }
-            }
-        });
-    }
 
 
 
