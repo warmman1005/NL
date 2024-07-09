@@ -193,7 +193,7 @@ app.post('/summarize-text', async (req, res) => {
             systemMessage = 'Bạn là trợ lý giúp tóm tắt văn bản.';
             break;
         default:
-            systemMessage = '你是一個幫助生成摘要的助手，請確保輸出為繁體中文。';
+            systemMessage = '你是一個幫助生成摘要的助手，請確保輸出為繁體中文，絕對不准出現簡體字。';
     }
 
     const userMessage = language === 'en'
@@ -204,7 +204,7 @@ app.post('/summarize-text', async (req, res) => {
         ? `Silakan ringkas konten berikut:\n\n${text}`
         : language === 'vi'
         ? `Vui lòng tóm tắt nội dung sau:\n\n${text}`
-        : `請總結以下內容:\n\n${text}`;
+        : `請總結以下內容:請確保輸出為繁體中文，絕對不准出現簡體字。\n\n${text}`;
 
     try {
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -256,7 +256,7 @@ app.post('/highlight-text', async (req, res) => {
             systemMessage = 'Bạn là trợ lý giúp trích xuất các điểm chính từ văn bản.';
             break;
         default:
-            systemMessage = '你是一個幫助提取重點的助手，請確保輸出為繁體中文。';
+            systemMessage = '你是一個幫助提取重點的助手，請確保輸出為繁體中文，絕對不准出現簡體字。';
     }
 
     const userMessage = language === 'en'
@@ -267,7 +267,7 @@ app.post('/highlight-text', async (req, res) => {
         ? `Silakan ekstrak tiga poin utama dari konten berikut:\n\n${text}`
         : language === 'vi'
         ? `Vui lòng trích xuất ba điểm chính từ nội dung sau:\n\n${text}`
-        : `請從以下內容中提取三個重點:\n\n${text}`;
+        : `請從以下內容中提取三個重點:請確保輸出為繁體中文，絕對不准出現簡體字。\n\n${text}`;
 
     try {
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
