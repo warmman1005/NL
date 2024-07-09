@@ -191,6 +191,8 @@ app.post('/summarize-text', async (req, res) => {
             break;
         case 'vi':
             systemMessage = 'Bạn là trợ lý giúp tóm tắt văn bản.';
+        case 'th':
+            systemMessage = 'คุณคือผู้ช่วยที่ช่วยสรุปข้อความ';
             break;
         default:
             systemMessage = '你是一個幫助生成摘要的助手，請確保輸出為繁體中文，絕對不准出現簡體字。';
@@ -204,6 +206,8 @@ app.post('/summarize-text', async (req, res) => {
         ? `Silakan ringkas konten berikut:\n\n${text}`
         : language === 'vi'
         ? `Vui lòng tóm tắt nội dung sau:\n\n${text}`
+      : language === 'th'
+        ? `กรุณาสรุปเนื้อหาต่อไปนี้:\n\n${text}`
         : `請總結以下內容:請確保輸出為繁體中文，絕對不准出現簡體字。\n\n${text}`;
 
     try {
@@ -254,6 +258,8 @@ app.post('/highlight-text', async (req, res) => {
             break;
         case 'vi':
             systemMessage = 'Bạn là trợ lý giúp trích xuất các điểm chính từ văn bản.';
+        case 'th':
+            systemMessage = 'คุณเป็นผู้ช่วยที่ช่วยสกัดจุดสำคัญจากข้อความ';
             break;
         default:
             systemMessage = '你是一個幫助提取重點的助手，請確保輸出為繁體中文，絕對不准出現簡體字。';
@@ -267,6 +273,8 @@ app.post('/highlight-text', async (req, res) => {
         ? `Silakan ekstrak tiga poin utama dari konten berikut:\n\n${text}`
         : language === 'vi'
         ? `Vui lòng trích xuất ba điểm chính từ nội dung sau:\n\n${text}`
+        : language === 'th'
+        ? `กรุณาสกัดจุดสำคัญจากเนื้อหาต่อไปนี้:\n\n${text}`
         : `請從以下內容中提取三個重點:請確保輸出為繁體中文，絕對不准出現簡體字。\n\n${text}`;
 
     try {
@@ -317,6 +325,8 @@ app.post('/polish-text', async (req, res) => {
             break;
         case 'vi':
             systemMessage = 'Bạn là trợ lý giúp chỉnh sửa văn bản.';
+        case 'th':
+            systemMessage = 'คุณคือผู้ช่วยในการช่วยขัดเกลาข้อความ';
             break;
         default:
             systemMessage = '你是一個幫助修飾文本的助手，請確保輸出為繁體中文，絕對不准出現簡體字。';
@@ -330,6 +340,8 @@ app.post('/polish-text', async (req, res) => {
         ? `Silakan perhalus konten berikut:\n\n${text}`
         : language === 'vi'
         ? `Vui lòng chỉnh sửa nội dung sau:\n\n${text}`
+        : language === 'th'
+        ? `กรุณาช่วยขัดเกลาข้อความต่อไปนี้:\n\n${text}`
         : `請修飾以下內容:並且跟原意思相近，並確保輸出為繁體中文，絕對不准出現簡體字\n\n${text}`;
 
     try {
