@@ -588,6 +588,8 @@ modifyBtn.addEventListener('click', async () => {
             language = 'en';
         } else if (/[\u3040-\u30FF]/.test(chunk)) {
             language = 'ja';
+            } else if (/[\u0E00-\u0E7F]/.test(chunk)) {
+            language = 'th';
         }
 
         try {
@@ -646,6 +648,8 @@ addSummary.addEventListener('click', async () => {
             language = 'en';
         } else if (/[\u3040-\u30FF]/.test(chunk)) {
             language = 'ja';
+            } else if (/[\u0E00-\u0E7F]/.test(chunk)) {
+            language = 'th';
         }
 
         try {
@@ -704,6 +708,8 @@ addHighlight.addEventListener('click', async () => {
             language = 'en';
         } else if (/[\u3040-\u30FF]/.test(chunk)) {
             language = 'ja';
+        } else if (/[\u0E00-\u0E7F]/.test(chunk)) {
+            language = 'th';
         }
 
         try {
